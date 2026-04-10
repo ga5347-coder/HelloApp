@@ -9,21 +9,20 @@ public class Main {
         if (args.length == 0) {
             System.out.println("Hello, World!");
         } else {
-            // Use StringBuilder for efficient string construction
             StringBuilder nameBuilder = new StringBuilder();
-            boolean first = true;
 
-            // Enhanced for loop (for-each) to iterate through arguments
+            // Use an enhanced for loop to iterate through names
             for (String name : args) {
-                if (!first) {
-                    nameBuilder.append(", ");
-                }
-                nameBuilder.append(name);
-                first = false;
+                // Append name followed by the delimiter
+                nameBuilder.append(name).append(", ");
             }
 
-            // Print the final greeting with the comma-separated list
-            System.out.println("Hello, " + nameBuilder.toString() + "!");
+            // Remove the trailing delimiter (", ") using substring
+            // We check length > 0 to be safe, though args.length > 0 ensures this here
+            String finalNames = nameBuilder.substring(0, nameBuilder.length() - 2);
+
+            // Print the final formatted greeting
+            System.out.println("Hello, " + finalNames + "!");
         }
     }
 }
